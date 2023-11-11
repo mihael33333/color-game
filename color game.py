@@ -15,23 +15,19 @@ text_colors = ["red", "green", "blue", "yellow", "cyan", "magenta"]
 correct_answers = 0
 wrong_answers = 0
 
-
 def winner():
     screen.fill("green")
     screen.blit(font.render("ПОБЕДА!!!", True, "white"), (130, 150))
     pygame.display.update()
-
 
 def loser():
     screen.fill("red")
     screen.blit(font.render("ПОРАЖЕНИЕ!!!", True, "white"), (80, 150))
     pygame.display.update()
 
-
 def colorupdate():
     global text
-    text = random.choice(["КРАСНЫЙ", "ЗЕЛЕНЫЙ", "СИНИЙ",
-                         "ЖЕЛТЫЙ", "ГОЛУБОЙ", "ПУРПУРНЫЙ"])
+    text = random.choice(["КРАСНЫЙ", "ЗЕЛЕНЫЙ", "СИНИЙ", "ЖЕЛТЫЙ", "ГОЛУБОЙ", "ПУРПУРНЫЙ"])
     global text_color
     text_color = random.choice(text_colors)
 
@@ -40,19 +36,13 @@ def colorupdate():
     screen.fill((0, 0, 0))
     screen.blit(text_surface, (100, 130))
 
-    screen.blit(ansv_font.render(
-        "Верно: "+str(correct_answers), True, "green"), (0, 0))
-    screen.blit(ansv_font.render(
-        "Неверно: "+str(wrong_answers), True, "red"), (0, 30))
-    screen.blit(describing_font.render(
-        "Нажимайте клавишу ВВЕРХ, если цвета совпадают.", True, "white"), (0, 330))
-    screen.blit(describing_font.render(
-        "Клавишу ВНИЗ, если цвета НЕ совпадают.", True, "white"), (0, 350))
-    screen.blit(describing_font.render(
-        "15 верных ответов - победа, 3 неверных - поражение.", True, "white"), (0, 370))
+    screen.blit(ansv_font.render("Верно: "+str(correct_answers), True, "green"), (0, 0))
+    screen.blit(ansv_font.render("Неверно: "+str(wrong_answers), True, "red"), (0, 30))
+    screen.blit(describing_font.render("Нажимайте клавишу ВВЕРХ, если цвета совпадают.", True, "white"), (0, 330))
+    screen.blit(describing_font.render("Клавишу ВНИЗ, если цвета НЕ совпадают.", True, "white"), (0, 350))
+    screen.blit(describing_font.render("15 верных ответов - победа, 3 неверных - поражение.", True, "white"), (0, 370))
 
     pygame.display.update()
-
 
 colorupdate()
 
@@ -79,12 +69,10 @@ while True:
             colorupdate()
 
     if correct_answers >= 15:
-        print("You won!")
         winner()
         pygame.time.wait(3*1000)
         break
     elif wrong_answers >= 3:
-        print("You lost!")
         loser()
         pygame.time.wait(3*1000)
         break
